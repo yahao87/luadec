@@ -209,7 +209,7 @@ char* DecompileString(const TValue* o) {
 				ret[p++] = *s;
 				i++; s++;
 				ret[p++] = *s;
-			} else if ((string_encoding == GBK || string_encoding == GB18030 || string_encoding == CP949) && i+1 < len
+			} else if ((string_encoding == GBK || string_encoding == GB18030) && i+1 < len
 				&& *s >= 0x81 && *s <= 0xFE
 				&& *(s+1) >= 0x40 && *(s+1) <= 0xFE && *(s+1) != 0x7F
 				) {
@@ -243,6 +243,12 @@ char* DecompileString(const TValue* o) {
 					i++; s++;
 					ret[p++] = *s;
 				}
+			} else if (string_encoding == CP949 && i+1 < len
+				&& *s >= 0xA1 && *s <= 0xFE
+			) {
+				ret[p++] = *s;
+				i++; s++;
+				ret[p++] = *s;
 			} else {
 				char* pos = &(ret[p]);
 				sprintf(pos, "\\%03d", *s);
