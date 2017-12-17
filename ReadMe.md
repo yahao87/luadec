@@ -7,7 +7,16 @@ It is based on Hisham Muhammad's luadec which targeted lua 5.0.x and LuaDec51 by
 
 LuaDec is free software and uses the same license as the original LuaDec.
 
+# Compile시 추가옵션으로 인코딩타입을 줄 수 있다.
+-se CP949 옵션을 주면 CP949 타입으로 출력된다.
 
+# Compile 시 에러발생하면
+소스 컴파일중에 에러가 발생하고 readline 관련한 에러라면
+yum install readline-devel
+`32bit luadec 가 필요하면 32bit 운영체제에서 컴파일하는게 정신건강을 지키는데 좋다.`
+
+
+# Compiling
 Compiling
 ---------
 ```
